@@ -28,11 +28,11 @@ namespace CalculatorPrototype.Controllers
                      break;
 
                  case 2:
-                     calc.Result = calc.FirstInput / calc.SecondInput;
+                     calc.Result = calc.FirstInput * calc.SecondInput;
                      break;
 
                  case 3:
-                     calc.Result = calc.FirstInput * calc.SecondInput;
+                     calc.Result = (decimal)calc.FirstInput / (decimal)calc.SecondInput;
                      break;
              }
             return View(calc);

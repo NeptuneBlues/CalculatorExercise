@@ -9,7 +9,7 @@ namespace CalculatorPrototype.Models
     {
         public int FirstInput { get; set; }
         public int SecondInput { get; set; }
-        public int Result { get; set; }
+        public decimal Result { get; set; }
         public int Operator { get; set; }
     }
 }
