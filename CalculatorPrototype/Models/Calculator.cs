@@ -7,8 +7,9 @@ namespace CalculatorPrototype.Models
 {
     public class Calculator
     {
-        public int firstInput { get; set; }
-        public int secondInput { get; set;}
-        public int result { get; set; }
+        public int FirstInput { get; set; }
+        public int SecondInput { get; set; }
+        public int Result { get; set; }
+        public int Operator { get; set; }
     }
 }

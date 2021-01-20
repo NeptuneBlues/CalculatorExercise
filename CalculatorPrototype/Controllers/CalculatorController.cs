@@ -15,9 +15,26 @@ namespace CalculatorPrototype.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Calculator calc, string number)
+        public IActionResult Index(Calculator calc, string operation)
         {
-            calc.firstInput = 1;
+            switch(calc.Operator)
+             {
+                 case 0:
+                     calc.Result = calc.FirstInput + calc.SecondInput;
+                     break;
+
+                 case 1:
+                     calc.Result = calc.FirstInput - calc.SecondInput;
+                     break;
+
+                 case 2:
+                     calc.Result = calc.FirstInput / calc.SecondInput;
+                     break;
+
+                 case 3:
+                     calc.Result = calc.FirstInput * calc.SecondInput;
+                     break;
+             }
             return View(calc);
         }
     }

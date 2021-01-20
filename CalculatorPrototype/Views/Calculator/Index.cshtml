@@ -1,45 +1,41 @@
 ﻿@model CalculatorPrototype.Models.Calculator
 
 @{
-    ViewBag.Title = "Index";
+    ViewData["Title"] = "Calculator";
 }
 
-<html>
-
-<body>
-
-    <div class="row">
-        @using (Html.BeginForm("/Index", "calculator", FormMethod.Post))
-        {
+<form asp-action="Index">
+    <div class="row">  
+        <div class="text-center">
             <div class="form-group">
-                <input type="text" class="form-control" id="firstInput" name="firstInput" value="@Model.firstInput" readonly />
+                <content>
+                    <select asp-for="FirstInput" class="custom-select">
+                        @for(int i = 0; i < 100; i++)
+                        {
+                            <option value="@i.ToString()">@i.ToString()</option>
+                        }
+                    </select>
+                    <select asp-for="Operator" class="custom-select">
+                        <option value="0">+</option>
+                        <option value="1">-</option>
+                        <option value="2">*</option>
+                        <option value="3">/</option>
+                    </select>
+                    <select asp-for="SecondInput" class="custom-select">
+                        @for (int i = 0; i < 100; i++)
+                        {
+                            <option value="@i.ToString()">@i.ToString()</option>
+                        }
+                    </select>
+                </content>
             </div>
-            <div class="text-center">
-                <div class="form-group">
-                    <content>
-                        <button type="submit" id="1" value="1" name="number">1</button>
-                        <button type="submit" id="2" value="2" name="number">2</button>
-                        <button type="submit" id="3" value="3" name="number">3</button>
-                    </content>
-                </div>
-                <div class="form-group">
-                    <content>
-                        <button type="submit" id="4" value="4" name="number">4</button>
-                        <button type="submit" id="5" value="5" name="number">5</button>
-                        <button type="submit" id="6" value="6" name="number">6</button>
-                    </content>
-                </div>
-                <div class="form-group">
-                    <content>
-                        <button type="submit" id="7" value="7" name="number">7</button>
-                        <button type="submit" id="8" value="8" name="number">8</button>
-                        <button type="submit" id="9" value="9" name="number">9</button>
-                    </content>
-                </div>
+            <div class="form-group">
+                <button type="submit" name="calculate" value="calculate">Calculate</button>
             </div>
-        }
+            <div class="form-group">
+                <label for="result">Result</label>
+                <input asp-for="Result" type="text" value="@Model.Result" readonly/>
+            </div>
+        </div>
     </div>
-
-</body>
-
-</html>
+</form>
