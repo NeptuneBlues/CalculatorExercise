@@ -32,7 +32,14 @@ namespace CalculatorPrototype.Controllers
                      break;
 
                  case 3:
-                     calc.Result = (decimal)calc.FirstInput / (decimal)calc.SecondInput;
+                    try
+                    {
+                        calc.Result = Math.Round((decimal)calc.FirstInput / (decimal)calc.SecondInput, 3);
+                    } catch(Exception e)
+                    {
+                        calc.Result = calc.Result;
+                        calc.ErrorMessage = "Cannot Divide by 0";
+                    }
                      break;
              }
             return View(calc);

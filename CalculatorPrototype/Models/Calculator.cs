@@ -11,5 +11,6 @@ namespace CalculatorPrototype.Models
         public int SecondInput { get; set; }
         public decimal Result { get; set; }
         public int Operator { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

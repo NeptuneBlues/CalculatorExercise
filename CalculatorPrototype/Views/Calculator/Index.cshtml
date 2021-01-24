@@ -33,6 +33,12 @@
                 <button type="submit" name="calculate" value="calculate">Calculate</button>
             </div>
             <div class="form-group">
+                @if (Model.ErrorMessage != null)
+                {
+                    <label for"error" style="color:red">@Model.ErrorMessage</label>
+                }
+            </div>
+            <div class="form-group">
                 <label for="result">Result</label>
                 <input asp-for="Result" type="text" value="@Model.Result" readonly/>
             </div>
