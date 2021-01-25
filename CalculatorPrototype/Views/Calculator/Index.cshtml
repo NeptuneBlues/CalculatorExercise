@@ -9,19 +9,19 @@
         <div class="text-center">
             <div class="form-group">
                 <content>
-                    <select asp-for="FirstInput" class="custom-select">
+                    <select name="FirstInput" value="FirstInput">
                         @for(int i = 0; i < 100; i++)
                         {
                             <option value="@i.ToString()">@i.ToString()</option>
                         }
                     </select>
-                    <select name="Operator" value="Operator" class="custom-select">
+                    <select name="Operator" value="Operator">
                         <option value="0">+</option>
                         <option value="1">-</option>
                         <option value="2">*</option>
                         <option value="3">/</option>
                     </select>
-                    <select asp-for="SecondInput" class="custom-select">
+                    <select name="SecondInput" value="SecondInput">
                         @for (int i = 0; i < 100; i++)
                         {
                             <option value="@i.ToString()">@i.ToString()</option>

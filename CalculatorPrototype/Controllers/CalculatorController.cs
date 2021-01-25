@@ -25,23 +25,23 @@ namespace CalculatorPrototype.Controllers
 
 
         [HttpPost]
-        public IActionResult RunCalculation(Calculator calc, int Operator)
+        public IActionResult RunCalculation(Calculator calc, int FirstInput, int SecondInput, int Operator)
         {
             switch(Operator) {
                 case 0:
-                    calc.Addition();
+                    calc.Addition(FirstInput, SecondInput);
                     break;
 
                 case 1:
-                    calc.Subtraction();
+                    calc.Subtraction(FirstInput, SecondInput);
                     break;
 
                 case 2:
-                    calc.Multiplication();
+                    calc.Multiplication(FirstInput, SecondInput);
                     break;
 
                 case 3:
-                    calc.Division();
+                    calc.Division(FirstInput, SecondInput);
                     break;
             }
 

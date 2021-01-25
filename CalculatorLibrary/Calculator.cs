@@ -7,32 +7,30 @@ namespace CalculatorLibrary
 {
     public class Calculator : ICalculation
     {
-        public int FirstInput { get; set; }
-        public int SecondInput { get; set; }
         public string ErrorMessage { get; set; }
         public decimal Result { get; set; }
 
 
-        public void Addition()
+        public void Addition(int firstInput, int secondInput)
         {
-            Result = (decimal)FirstInput + (decimal)SecondInput;
+            Result = (decimal)firstInput + (decimal)secondInput;
         }
 
-        public void Subtraction()
+        public void Subtraction(int firstInput, int secondInput)
         {
-            Result = (decimal)FirstInput - (decimal)SecondInput;
+            Result = (decimal)firstInput - (decimal)secondInput;
         }
 
-        public void Multiplication()
+        public void Multiplication(int firstInput, int secondInput)
         {
-            Result = (decimal)FirstInput * (decimal)SecondInput;
+            Result = (decimal)firstInput * (decimal)secondInput;
         }
 
-        public void Division()
+        public void Division(int firstInput, int secondInput)
         {
             try
             {
-                Result = Math.Round((decimal)FirstInput / (decimal)SecondInput, 3);
+                Result = Math.Round((decimal)firstInput / (decimal)secondInput, 3);
             }
             catch (Exception e)
             {
