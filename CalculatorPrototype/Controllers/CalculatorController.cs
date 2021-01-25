@@ -10,23 +10,25 @@ namespace CalculatorPrototype.Controllers
 {
     public class CalculatorController : Controller
     {
-        ICalculation Calculator { get; set; }
+        ICalculation _calculator { get; set; }
 
-        public CalculatorController()
+        public CalculatorController(ICalculation calc)
         {
-            Calculator = new Calculator();
+            _calculator = calc;
         }
 
         public IActionResult Index()
         {
-            return View(Calculator);
+            ICalculation calculator = new Calculator();
+            return View(calculator);
         }
 
+
         [HttpPost]
-        public IActionResult Index(Calculator calc)
+        public IActionResult RunCalculation(Calculator calc)
         {
             calc.Calculate();
-            return View(calc);
+            return View("Index", calc);
         }
     }
 }
