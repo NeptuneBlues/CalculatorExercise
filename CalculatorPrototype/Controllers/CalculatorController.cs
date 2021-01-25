@@ -19,8 +19,7 @@ namespace CalculatorPrototype.Controllers
 
         public IActionResult Index()
         {
-            ICalculation calculator = new Calculator();
-            return View(calculator);
+            return View(_calculator);
         }
 
 
