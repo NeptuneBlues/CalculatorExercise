@@ -50,7 +50,7 @@ namespace CalculatorPrototype
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=calculator}/{action=Index}/{id?}");
+                    pattern: "{controller=calculator}/{action=Index}/{calc?}");
             });
         }
     }

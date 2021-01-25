@@ -4,44 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CalculatorPrototype.Models;
+using CalculatorLibrary;
 
 namespace CalculatorPrototype.Controllers
 {
     public class CalculatorController : Controller
     {
+        ICalculation Calculator { get; set; }
+
+        public CalculatorController()
+        {
+            Calculator = new Calculator();
+        }
+
         public IActionResult Index()
         {
-            return View(new Calculator());
+            return View(Calculator);
         }
 
         [HttpPost]
-        public IActionResult Index(Calculator calc, string operation)
+        public IActionResult Index(Calculator calc)
         {
-            switch(calc.Operator)
-             {
-                 case 0:
-                     calc.Result = calc.FirstInput + calc.SecondInput;
-                     break;
-
-                 case 1:
-                     calc.Result = calc.FirstInput - calc.SecondInput;
-                     break;
-
-                 case 2:
-                     calc.Result = calc.FirstInput * calc.SecondInput;
-                     break;
-
-                 case 3:
-                    try
-                    {
-                        calc.Result = Math.Round((decimal)calc.FirstInput / (decimal)calc.SecondInput, 3);
-                    } catch(Exception e)
-                    {
-                        calc.Result = calc.Result;
-                        calc.ErrorMessage = "Cannot Divide by 0";
-                    }
-                     break;
-             }
+            calc.Calculate();
             return View(calc);
         }
     }

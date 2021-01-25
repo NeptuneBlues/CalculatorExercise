@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CalculatorPrototype.Models
 {
-    public class Calculator
+    public class Calculate
     {
         public int FirstInput { get; set; }
         public int SecondInput { get; set; }
