@@ -28,19 +28,26 @@ namespace CalculatorPrototype.Controllers
         {
             switch(Operator) {
                 case 0:
-                    calc.Addition(FirstInput, SecondInput);
+                    ViewData["Result"] = calc.Addition(FirstInput, SecondInput);
                     break;
 
                 case 1:
-                    calc.Subtraction(FirstInput, SecondInput);
+                    ViewData["Result"] = calc.Subtraction(FirstInput, SecondInput);
                     break;
 
                 case 2:
-                    calc.Multiplication(FirstInput, SecondInput);
+                    ViewData["Result"] = calc.Multiplication(FirstInput, SecondInput);
                     break;
 
                 case 3:
-                    calc.Division(FirstInput, SecondInput);
+                    try
+                    {
+                      ViewData["Result"] = calc.Division(FirstInput, SecondInput);
+                    } catch(Exception e)
+                    {
+                        ViewData["Result"] = 0;
+                        ViewData["Error"] = "Cannot Divide by 0";
+                    }
                     break;
             }
 
