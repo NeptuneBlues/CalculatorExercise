@@ -9,37 +9,35 @@ namespace CalculatorLibrary
     {
         public int FirstInput { get; set; }
         public int SecondInput { get; set; }
-        public decimal Result { get; set; }
-        public int Operator { get; set; }
         public string ErrorMessage { get; set; }
+        public decimal Result { get; set; }
 
-        public void Calculate()
+
+        public void Addition()
         {
-            switch (Operator)
+            Result = (decimal)FirstInput + (decimal)SecondInput;
+        }
+
+        public void Subtraction()
+        {
+            Result = (decimal)FirstInput - (decimal)SecondInput;
+        }
+
+        public void Multiplication()
+        {
+            Result = (decimal)FirstInput * (decimal)SecondInput;
+        }
+
+        public void Division()
+        {
+            try
             {
-                case 0:
-                    Result = FirstInput + SecondInput;
-                    break;
-
-                case 1:
-                    Result = FirstInput - SecondInput;
-                    break;
-
-                case 2:
-                    Result = FirstInput * SecondInput;
-                    break;
-
-                case 3:
-                    try
-                    {
-                        Result = Math.Round((decimal)FirstInput / (decimal)SecondInput, 3);
-                    }
-                    catch (Exception e)
-                    {
-                        Result = Result;
-                        ErrorMessage = "Cannot Divide by 0";
-                    }
-                    break;
+                Result = Math.Round((decimal)FirstInput / (decimal)SecondInput, 3);
+            }
+            catch (Exception e)
+            {
+                Result = Result;
+                ErrorMessage = "Cannot Divide by 0";
             }
         }
     }

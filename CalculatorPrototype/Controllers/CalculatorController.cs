@@ -25,9 +25,26 @@ namespace CalculatorPrototype.Controllers
 
 
         [HttpPost]
-        public IActionResult RunCalculation(Calculator calc)
+        public IActionResult RunCalculation(Calculator calc, int Operator)
         {
-            calc.Calculate();
+            switch(Operator) {
+                case 0:
+                    calc.Addition();
+                    break;
+
+                case 1:
+                    calc.Subtraction();
+                    break;
+
+                case 2:
+                    calc.Multiplication();
+                    break;
+
+                case 3:
+                    calc.Division();
+                    break;
+            }
+
             return View("Index", calc);
         }
     }
