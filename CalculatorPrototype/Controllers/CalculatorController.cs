@@ -11,10 +11,12 @@ namespace CalculatorPrototype.Controllers
     public class CalculatorController : Controller
     {
         ICalculation _calculator { get; set; }
+        CalculatorDBAccessLayer _dbAccess { get; set; }
 
-        public CalculatorController(ICalculation calc)
+        public CalculatorController(ICalculation calc, CalculatorDBAccessLayer dbaccess)
         {
             _calculator = calc;
+            _dbAccess = _dbAccess;
         }
 
         public IActionResult Index()
@@ -50,6 +52,7 @@ namespace CalculatorPrototype.Controllers
                     }
                     break;
             }
+            _dbAccess.AddNewCalculation(FirstInput, SecondInput, Operator.ToString(), (decimal)ViewData["Result"], ViewData["ErrorMessage"].ToString());
 
             return View("Index", _calculator);
         }

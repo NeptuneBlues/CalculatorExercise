@@ -26,6 +26,7 @@ namespace CalculatorPrototype
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ICalculation, Calculator>();
+            services.AddSingleton<CalculatorDBAccessLayer>();
             services.AddControllersWithViews();
         }
 
