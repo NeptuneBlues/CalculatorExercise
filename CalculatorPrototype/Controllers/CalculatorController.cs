@@ -24,25 +24,25 @@ namespace CalculatorPrototype.Controllers
 
 
         [HttpPost]
-        public IActionResult RunCalculation(Calculator calc, int FirstInput, int SecondInput, int Operator)
+        public IActionResult RunCalculation(int FirstInput, int SecondInput, int Operator)
         {
             switch(Operator) {
                 case 0:
-                    ViewData["Result"] = calc.Addition(FirstInput, SecondInput);
+                    ViewData["Result"] = _calculator.Addition(FirstInput, SecondInput);
                     break;
 
                 case 1:
-                    ViewData["Result"] = calc.Subtraction(FirstInput, SecondInput);
+                    ViewData["Result"] = _calculator.Subtraction(FirstInput, SecondInput);
                     break;
 
                 case 2:
-                    ViewData["Result"] = calc.Multiplication(FirstInput, SecondInput);
+                    ViewData["Result"] = _calculator.Multiplication(FirstInput, SecondInput);
                     break;
 
                 case 3:
                     try
                     {
-                      ViewData["Result"] = calc.Division(FirstInput, SecondInput);
+                      ViewData["Result"] = _calculator.Division(FirstInput, SecondInput);
                     } catch(Exception e)
                     {
                         ViewData["Result"] = 0;
@@ -51,7 +51,7 @@ namespace CalculatorPrototype.Controllers
                     break;
             }
 
-            return View("Index", calc);
+            return View("Index", _calculator);
         }
     }
 }
