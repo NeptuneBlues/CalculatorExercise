@@ -16,10 +16,10 @@
                         }
                     </select>
                     <select name="Operator" value="Operator">
-                        <option value="0">+</option>
-                        <option value="1">-</option>
-                        <option value="2">*</option>
-                        <option value="3">/</option>
+                        <option value=0>+</option>
+                        <option value=1>-</option>
+                        <option value=2>*</option>
+                        <option value=3>/</option>
                     </select>
                     <select name="SecondInput" value="SecondInput">
                         @for (int i = 0; i < 100; i++)
@@ -33,14 +33,14 @@
                 <button type="submit" name="calculate" value="calculate">Calculate</button>
             </div>
             <div class="form-group">
-                @if (ViewData["Error"] != null)
+                @if (@Model.ErrorMessage != null)
                 {
-                    <label for"error" style="color:red">@ViewData["Error"]</label>
+                    <label for"error" style="color:red">@Model.ErrorMessage</label>
                 }
             </div>
             <div class="form-group">
                 <label for="result">Result</label>
-                <input type="text" value=@ViewData["Result"] readonly/>
+                <input type="text" value=@Model.Result readonly/>
             </div>
         </div>
     </div>

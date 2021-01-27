@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using CalculatorPrototype.Models;
+using CalculatorLibrary;
 
 namespace CalculatorPrototype.Models
 {
     public class CalculatorDBAccessLayer
     {
-        SqlConnection con = new SqlConnection("Put your connection string here");
-        public string AddNewCalculation(int firstInput, int secondInput, string operation, decimal result, string errorMessage)
+        SqlConnection con = new SqlConnection("Data Source=Dev-SDJ;Initial Catalog=CalculatorPrototype;Persist Security Info=True;User ID=JB_ExerciseUser;Password=Exercise179181!?!");
+        public string AddNewCalculation(int firstInput, int secondInput, string operation, ICalculation calc)
         {
             try
             {
@@ -21,8 +22,8 @@ namespace CalculatorPrototype.Models
                 cmd.Parameters.AddWithValue("@FirstInput", firstInput);
                 cmd.Parameters.AddWithValue("@SecondInput", secondInput);
                 cmd.Parameters.AddWithValue("@Operator", operation);
-                cmd.Parameters.AddWithValue("@Result", result);
-                cmd.Parameters.AddWithValue("@ErrorMessage", errorMessage);
+                cmd.Parameters.AddWithValue("@Result", calc.Result);
+                cmd.Parameters.AddWithValue("@ErrorMessage", calc.ErrorMessage);
                 cmd.Parameters.AddWithValue("@TimeStamp", DateTime.Now);
                 con.Open();
                 cmd.ExecuteNonQuery();

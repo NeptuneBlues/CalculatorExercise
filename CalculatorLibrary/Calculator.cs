@@ -7,6 +7,10 @@ namespace CalculatorLibrary
 {
     public class Calculator : ICalculation
     {
+        public decimal Result { get; set; }
+        public string ErrorMessage { get; set; }
+
+
         public decimal Addition(int firstInput, int secondInput)
         {
             return (decimal)firstInput + (decimal)secondInput;
