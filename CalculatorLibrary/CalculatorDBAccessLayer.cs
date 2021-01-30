@@ -9,9 +9,9 @@ using CalculatorLibrary;
 
 namespace CalculatorPrototype.Models
 {
-    public class CalculatorDBAccessLayer
+    public class CalculatorDBAccessLayer : IDBAccess
     {
-        SqlConnection con = new SqlConnection("Data Source=Dev-SDJ;Initial Catalog=CalculatorPrototype;Persist Security Info=True;User ID=JB_ExerciseUser;Password=Exercise179181!?!");
+        private SqlConnection con = new SqlConnection("Data Source=Dev-SDJ;Initial Catalog=CalculatorPrototype;Persist Security Info=True;User ID=JB_ExerciseUser;Password=Exercise179181!?!");
         public string AddNewCalculation(int firstInput, int secondInput, string operation, ICalculation calc)
         {
             try

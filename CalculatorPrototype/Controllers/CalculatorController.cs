@@ -11,9 +11,9 @@ namespace CalculatorPrototype.Controllers
     public class CalculatorController : Controller
     {
         ICalculation _calculator { get; set; }
-        CalculatorDBAccessLayer _dbAccess { get; set; }
+        IDBAccess _dbAccess { get; set; }
 
-        public CalculatorController(ICalculation calc, CalculatorDBAccessLayer accessor)
+        public CalculatorController(ICalculation calc, IDBAccess accessor)
         {
             _calculator = calc;
             _dbAccess = accessor;
