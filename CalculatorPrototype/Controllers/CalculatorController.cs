@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CalculatorPrototype.Models;
 using CalculatorLibrary;
+using DAL.SQL;
 
 namespace CalculatorPrototype.Controllers
 {
@@ -52,9 +53,17 @@ namespace CalculatorPrototype.Controllers
                     }
                     break;
             }
-            _dbAccess.AddNewCalculation(FirstInput, SecondInput, Operator.ToString(), calc);
+            _dbAccess.AddNewCalculation(FirstInput, SecondInput, Operator.ToString(), calc.Result, calc.ErrorMessage);
 
             return View("Index", calc);
+        }
+
+        [HttpGet]
+        public IActionResult GetPastCalculations(int max = 10)
+        {
+            var result = _dbAccess.GetCalculations(max);
+            return View(result);
+            throw new NotImplementedException();
         }
     }
 }
