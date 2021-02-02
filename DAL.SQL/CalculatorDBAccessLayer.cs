@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using CalculatorPrototype.Models;
-using CalculatorLibrary;
+using Domain.Models;
 
-namespace CalculatorPrototype.Models
+namespace DAL.SQL
 {
     public class CalculatorDBAccessLayer : IDBAccess
     {
         private SqlConnection con = new SqlConnection("Data Source=Dev-SDJ;Initial Catalog=CalculatorPrototype;Persist Security Info=True;User ID=JB_ExerciseUser;Password=Exercise179181!?!");
-        public string AddNewCalculation(int firstInput, int secondInput, string operation, ICalculation calc)
+        public string AddNewCalculation(int firstInput, int secondInput, string operation, decimal result, string error)
         {
             try
             {
@@ -22,8 +19,8 @@ namespace CalculatorPrototype.Models
                 cmd.Parameters.AddWithValue("@FirstInput", firstInput);
                 cmd.Parameters.AddWithValue("@SecondInput", secondInput);
                 cmd.Parameters.AddWithValue("@Operator", operation);
-                cmd.Parameters.AddWithValue("@Result", calc.Result);
-                cmd.Parameters.AddWithValue("@ErrorMessage", calc.ErrorMessage);
+                cmd.Parameters.AddWithValue("@Result", result);
+                cmd.Parameters.AddWithValue("@ErrorMessage", error);
                 cmd.Parameters.AddWithValue("@TimeStamp", DateTime.Now);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -65,6 +62,16 @@ namespace CalculatorPrototype.Models
                 }
             }
             return newID;
+        }
+
+        public string AddNewCalculation(CalculationDto calculation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<CalculationDto> GetCalculations(int max)
+        {
+            throw new NotImplementedException();
         }
     }
 }

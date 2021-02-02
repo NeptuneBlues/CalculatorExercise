@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Domain.Models.CalculationDto>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+
+
+<h2>title</h2>
+
+
+
+@foreach (var calculationDto in Model)
+{
+    <h1>@calculationDto.Result</h1>
+}

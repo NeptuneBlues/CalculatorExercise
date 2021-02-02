@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CalculatorLibrary;
 using CalculatorPrototype.Models;
+using DAL.SQL;
 
 namespace CalculatorPrototype
 {
