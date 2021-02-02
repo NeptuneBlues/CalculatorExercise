@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using DAL.SQL.Entities;
+using DAL.SQL;
 using Domain.Models;
 
 namespace DAL.SQL

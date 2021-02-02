@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using CalculatorPrototype.Models;
 using CalculatorLibrary;
 using DAL.SQL;
+using Domain.Models;
 
 namespace CalculatorPrototype.Controllers
 {
@@ -29,6 +30,11 @@ namespace CalculatorPrototype.Controllers
         [HttpPost]
         public IActionResult RunCalculation(Calculator calc, int FirstInput, int SecondInput, int Operator)
         {
+            CalculationDto container = new CalculationDto();
+            container.FirstInput = FirstInput;
+            container.SecondInput = SecondInput;
+            container.Operator = Operator.ToString();
+
             switch(Operator) {
                 case 0:
                     calc.Result = _calculator.Addition(FirstInput, SecondInput);
@@ -49,11 +55,12 @@ namespace CalculatorPrototype.Controllers
                     } catch(Exception e)
                     {
                         calc.Result = 0;
-                        calc.ErrorMessage = "Cannot Divide by 0";
+                        container.Error = calc.ErrorMessage = "Cannot Divide by 0";
                     }
                     break;
             }
-            _dbAccess.AddNewCalculation(FirstInput, SecondInput, Operator.ToString(), calc.Result, calc.ErrorMessage);
+            container.Result = calc.Result;
+            _dbAccess.AddNewCalculation(container);
 
             return View("Index", calc);
         }

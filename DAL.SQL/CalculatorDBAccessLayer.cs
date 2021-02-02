@@ -9,18 +9,18 @@ namespace DAL.SQL
     public class CalculatorDBAccessLayer : IDBAccess
     {
         private SqlConnection con = new SqlConnection("Data Source=Dev-SDJ;Initial Catalog=CalculatorPrototype;Persist Security Info=True;User ID=JB_ExerciseUser;Password=Exercise179181!?!");
-        public string AddNewCalculation(int firstInput, int secondInput, string operation, decimal result, string error)
+        public string AddNewCalculation(CalculationDto calculation)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand("sp_Calculation_Add", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ID", GetNewIDNumber());
-                cmd.Parameters.AddWithValue("@FirstInput", firstInput);
-                cmd.Parameters.AddWithValue("@SecondInput", secondInput);
-                cmd.Parameters.AddWithValue("@Operator", operation);
-                cmd.Parameters.AddWithValue("@Result", result);
-                cmd.Parameters.AddWithValue("@ErrorMessage", error);
+                cmd.Parameters.AddWithValue("@FirstInput", calculation.FirstInput);
+                cmd.Parameters.AddWithValue("@SecondInput", calculation.SecondInput);
+                cmd.Parameters.AddWithValue("@Operator", calculation.Operator);
+                cmd.Parameters.AddWithValue("@Result", calculation.Result);
+                cmd.Parameters.AddWithValue("@ErrorMessage", calculation.Error);
                 cmd.Parameters.AddWithValue("@TimeStamp", DateTime.Now);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -64,14 +64,11 @@ namespace DAL.SQL
             return newID;
         }
 
-        public string AddNewCalculation(CalculationDto calculation)
-        {
-            throw new NotImplementedException();
-        }
 
         public IEnumerable<CalculationDto> GetCalculations(int max)
         {
-            throw new NotImplementedException();
+            List<CalculationDto> resultList = new List<CalculationDto>();
+            return resultList;
         }
     }
 }
