@@ -10,7 +10,7 @@
             <div class="form-group">
                 <content>
                     <select name="FirstInput" value="FirstInput">
-                        @for(int i = 0; i < 100; i++)
+                        @for (int i = 0; i < 100; i++)
                         {
                             <option value="@i.ToString()">@i.ToString()</option>
                         }
@@ -40,7 +40,19 @@
             </div>
             <div class="form-group">
                 <label for="result">Result</label>
-                <input type="text" value=@Model.Result readonly/>
+                <input type="text" value=@Model.Result readonly />
+            </div>
+        </div>
+    </div>
+</form>
+
+<form asp-action="GetPastCalculations">
+    <div class="row">
+        <div class="text-center">
+            <div class="form-group">
+                <div class="form-group">
+                    <button type="submit" name="moreResults" value="moreResults">See Past Results</button>
+                </div>
             </div>
         </div>
     </div>

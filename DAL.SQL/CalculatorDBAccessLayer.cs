@@ -65,9 +65,36 @@ namespace DAL.SQL
         }
 
 
-        public IEnumerable<CalculationDto> GetCalculations(int max)
+        public IEnumerable<CalculationDto> GetCalculations()
         {
             List<CalculationDto> resultList = new List<CalculationDto>();
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_calculations", con);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        CalculationDto newResult = new CalculationDto();
+                        newResult.FirstInput = int.Parse(reader["firstInput"].ToString());
+                        newResult.Operator = reader["operator"].ToString();
+                        newResult.SecondInput = int.Parse(reader["secondInput"].ToString());
+                        newResult.Result = int.Parse(reader["result"].ToString());
+                        newResult.Error = reader["errorMessage"].ToString();
+                        resultList.Add(newResult);
+                    }
+                }
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+
             return resultList;
         }
     }

@@ -65,12 +65,11 @@ namespace CalculatorPrototype.Controllers
             return View("Index", calc);
         }
 
-        [HttpGet]
-        public IActionResult GetPastCalculations(int max = 10)
+        [HttpPost]
+        public IActionResult GetPastCalculations()
         {
-            var result = _dbAccess.GetCalculations(max);
+            List<CalculationDto> result = new List<CalculationDto>(_dbAccess.GetCalculations());
             return View(result);
-            throw new NotImplementedException();
         }
     }
 }
