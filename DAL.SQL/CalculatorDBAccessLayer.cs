@@ -65,13 +65,13 @@ namespace DAL.SQL
         }
 
 
-        public IEnumerable<CalculationDto> GetCalculations()
+        public IEnumerable<CalculationDto> GetCalculations(int max = 10)
         {
             List<CalculationDto> resultList = new List<CalculationDto>();
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM tbl_calculations", con);
+                SqlCommand cmd = new SqlCommand("SELECT TOP " + max + " * from tbl_calculations ORDER BY result DESC;", con);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())

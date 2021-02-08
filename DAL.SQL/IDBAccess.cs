@@ -8,7 +8,7 @@ namespace DAL.SQL
     {
         string AddNewCalculation(CalculationDto calculation);
 
-        IEnumerable<CalculationDto> GetCalculations();
+        IEnumerable<CalculationDto> GetCalculations(int max = 10);
 
     }
 }
