@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Contracts;
 using Domain.Models;
 
 namespace DAL.SQL
@@ -37,7 +38,7 @@ namespace DAL.SQL
             }
         }
 
-        public int GetNewIDNumber()
+        private int GetNewIDNumber()
         {
             var newID = 0;
             try
@@ -71,7 +72,7 @@ namespace DAL.SQL
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT TOP " + max + " * from tbl_calculations ORDER BY result DESC;", con);
+                SqlCommand cmd = new SqlCommand("SELECT TOP " + max + " * from tbl_calculations ORDER BY ID DESC;", con);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())

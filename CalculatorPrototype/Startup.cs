@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using CalculatorLibrary;
 using CalculatorPrototype.Models;
 using DAL.SQL;
+using Contracts;
+using DAL.EntityFramework;
 
 namespace CalculatorPrototype
 {
@@ -26,8 +28,9 @@ namespace CalculatorPrototype
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ICalculation, Calculator>();
-            services.AddSingleton<IDBAccess, CalculatorDBAccessLayer>();
+            services.AddDbContext<DataContext>();
+            services.AddTransient<ICalculation, Calculator>();
+            services.AddTransient<IDBAccess, CalculationRepository>();
             services.AddControllersWithViews();
         }
 

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using DAL.SQL;
 using Domain.Models;
 
-namespace DAL.SQL
+namespace Contracts
 {
     public interface IDBAccess
     {

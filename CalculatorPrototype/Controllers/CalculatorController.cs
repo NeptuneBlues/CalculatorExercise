@@ -7,6 +7,7 @@ using CalculatorPrototype.Models;
 using CalculatorLibrary;
 using DAL.SQL;
 using Domain.Models;
+using Contracts;
 
 namespace CalculatorPrototype.Controllers
 {
